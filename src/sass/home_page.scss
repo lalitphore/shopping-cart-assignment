@@ -1,0 +1,39 @@
+.hp-product-category{
+    &:nth-of-type(2n)
+    {
+        flex-direction: row-reverse;
+    }
+    &__box{
+        display: flex;
+        background-color:$white-color;
+        padding: 20px 0px;
+        flex-direction: inherit;
+        align-items: center;
+        
+        &__img
+        {
+            flex-basis: 35%;
+            text-align: center;
+            img
+            {
+                width: 70%;
+            }
+        }
+        &__detail
+        {
+            flex-basis: 65%;
+            padding: 0px 15px;
+            text-align: center;
+            .btn-1
+            {
+                font-size: 55%;
+            }
+            p
+            {
+                font-size: 70%;
+                line-height: 15px;
+                padding: 10px 0px;
+            }
+        }
+    }
+}

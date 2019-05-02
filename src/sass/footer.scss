@@ -1,0 +1,27 @@
+.footer 
+{
+    display: flex;    
+    background-color: $light-gray;
+    &__wrapper{
+        width: 100%;
+        &__copyright{
+            flex: 1;
+            padding: 1% 1%;
+            font-size: 55%;
+            text-align: center;
+        }
+    }
+}
+
+@include tablet {
+    .footer 
+    {
+        &__wrapper{
+            padding: 0 100px;
+            &__copyright{
+                font-size: 70%;
+                text-align: left;
+            }
+        }
+    }
+}

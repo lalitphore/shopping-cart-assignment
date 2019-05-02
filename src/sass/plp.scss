@@ -1,0 +1,212 @@
+.plp-container{
+    display: flex;
+    flex-direction: column;
+    &__sidebar
+    {
+        padding: 8px 0px;
+        margin: 20px 0px;
+        position: relative;
+        &__categories
+        {
+            background-color: $light-gray;
+            width: 100%;
+            display: inline-table;
+            li
+            {
+                padding: 6px 5%;
+                display: none;
+                border-bottom: 1px solid #d4d4d4;
+                a
+                {
+                    color:$dark-gray;
+                    font-size: 88%;
+                }
+            }
+            .active
+            {
+                background-color: $primary-color;
+                display: block;
+                a
+                {
+                    color:$white-color;
+                }
+            }
+            
+        }
+
+        &__mobile-icon
+        {
+            position: absolute;
+            display: inline;
+            float: right;
+            right: 20px;
+            top: 15px;
+        }
+    }
+
+    &__products
+    {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        &__item
+        {
+            border-bottom: 1px dashed $light-gray;
+            padding: 4%;
+            flex-basis: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            &__title
+            {
+                flex-basis: 100%;
+                padding-bottom: 15px;
+            }
+
+            &__image
+            {
+                img
+                {
+                    width:90%;
+                }
+                flex-basis: 45%;
+            }
+
+            &__details
+            {
+                flex-basis: 55%;
+                p
+                {
+                    background-color: #ececec;
+                    font-size: 80%;
+                    line-height: 18px;
+                    padding: 5px;
+                    margin-bottom: 10px;
+                    height: fit-content;
+                }
+            }
+
+            &__price
+            {
+                flex-basis: 100%;                
+                a
+                {
+                    display: block;
+                    padding: 4px;
+                }
+                .price:before
+                {
+                    content: ' @ ';
+                }
+                button{
+                    font-size: 70%;
+                }
+            }
+        }
+    }
+}
+
+@include tablet {
+    .plp-container{
+        flex-direction: row;
+        &__sidebar
+        {
+            flex-basis: 25%;
+            background-color: $light-gray;
+            padding: 8px 0px;
+            margin: 0px 0px;
+            height: 100vh;
+            &__categories
+            {
+                li
+                {
+                    display: inline-block;
+                    padding: 6px 10%;
+                    border-bottom: 1px solid #d4d4d4;
+                    width: 100%;
+                }
+                .active
+                {
+                    background-color: $primary-color;
+                    a
+                    {
+                        color: $white-color;
+                    }
+                }
+            }
+    
+            &__mobile-icon
+            {
+               display: none;
+            }
+        }
+    
+        &__products
+        {
+            flex-basis: 75%;
+            flex-direction: row;
+            &__item
+            {
+                position: relative;
+                flex-basis: 50%;
+                &__details
+                {
+                    height: auto;
+                }
+                &__price
+                {
+                    flex-basis: unset;
+                    position: absolute;
+                    left: 12px;
+                    width: 88%;
+                    button{
+                        width: 100%;
+                    }
+                }
+            }
+           
+        }
+    }
+}
+
+@include desktop {
+    .plp-container{
+        &__products
+        {
+            &__item
+            {
+                flex-basis: 25%;
+                padding: 1%;
+                &__image
+                {
+                    flex-basis: 100%;
+                }
+                &__details
+                {
+                    flex-basis: 100%;
+                    height: fit-content;
+                    min-height: 68px;
+                }
+                &__price
+                {
+                    position: relative;
+                    text-align: right;
+                    
+                    button
+                    {
+                        width: 50%;
+                    }
+                    .price{
+                        position: absolute;
+                        left: 0;
+                        color: $black-color;
+                        &:before
+                        {
+                            content: 'MRP ';
+                        }
+                    }
+                }
+            }  
+        }
+    }
+
+}

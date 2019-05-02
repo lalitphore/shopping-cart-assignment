@@ -1,0 +1,171 @@
+.header{
+    display:flex;
+    &__logo-box{
+        flex-basis: 20%;
+        padding: 4px 0px 0px 4px;
+
+        &__image{
+            height: $logo-height-mobile;
+        }
+    }
+
+    &__nav-box{
+        flex-basis: 80%;
+    }
+
+    ul{
+        list-style: none;
+    }
+
+    &__cart{
+        background-color: $light-gray;
+        float:right;
+        height: 100%;
+        width: 80px;
+        position: relative;
+        right: 50px;
+
+        &__icon{
+            position: absolute;
+            display: inline-block;
+            top: 18px;
+            left: 16px;        
+        }
+
+        &__icon .mitems{
+            position: absolute;
+            background-color: $secondary-color;
+            top: -7px;
+            left: 70%;
+            width: 26px;
+            text-align: center;
+            border-radius: 100px;
+            color: $white-color;
+            font-size: 75%;
+        }
+
+        &__items{
+            display: none;
+        }
+    }
+
+    &__mobile-nav{
+        position: absolute;
+        right: 22px;
+        top: 15px;
+        color:$secondary-color;
+    }
+
+    &__menu{
+        display: none;
+        position: absolute;
+        right: 0px;
+        z-index: 1;
+        top: 60px;
+        width: 35%;
+        text-align: center;
+        background-color: $black-color;
+        padding: 20px;
+        font-size: 75%;
+    }
+}
+
+
+//------------ Media Query --------------  
+
+@include tablet {
+    .header{
+        position: relative;
+
+        &__cart{
+            position:absolute;
+            right: 0;
+            height: 65%;
+            width: 120px;
+            bottom: 0;
+
+            & a{
+                position: absolute;
+                width: 100%;
+                display: block;
+                height: 100%;
+                padding: 10px;
+                text-transform: none;
+            }
+
+            &__icon{
+                display: inline-block;
+                position: inherit;
+                top: 10px;
+                left: 16px;
+                & .mitems{
+                    display: none;
+                }
+            }
+
+            &__items{
+                display: inline-block;
+                color:$black-color;
+                font-size: 85%;
+                margin-left: 42px;
+                margin-top: 5px;
+            }
+        }
+
+
+        &__mobile-nav{
+            display: none;
+        }
+        &__logo-box__image{
+            height: 60px;
+        }
+
+        &__nav-box{
+            display: flex;
+        }
+
+        &__menu{
+            display: inline-block;
+            position: initial;
+            width: 70%;
+            text-align: center;
+            background-color: transparent;
+            padding: 20px;
+            font-size: 75%;
+            
+            &__1{
+                float: left;
+                position: absolute;
+                top: 42px;
+
+                & li{
+                    display: inline-block;
+                    margin-right: 24px;
+                }
+            }
+            
+            &__2{
+                float: right;
+                position: absolute;
+                right: 12px;
+                top: 3px;
+                & li{
+                    display: inline-block;
+                    margin-left: 15px;
+                }
+            }
+
+            a{
+                color:$black-color;
+            }
+
+        }
+
+    }
+}
+
+@include desktop {
+    .container{
+        width: 80%;
+    }
+}
