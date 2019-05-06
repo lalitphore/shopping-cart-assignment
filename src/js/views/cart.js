@@ -5,7 +5,7 @@ export default class CartView
     }
     setHtml()
     {
-        var cartTemplate = require('../templates/product-cart.hbs');
+        var cartTemplate = require('../../templates/product-cart.hbs');
         var cartSelector = document.querySelector(".cart-container");
         cartSelector.innerHTML= cartTemplate(this.products);
         this.updateCounter();

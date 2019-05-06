@@ -1,6 +1,8 @@
+import productModel from './product';
 export default class CartModel
 {
     constructor(){
+
         this.cartProducts=sessionStorage.getItem("cartProducts");
         if(this.cartProducts==null){ this.cartProducts={}; }else{ this.cartProducts=JSON.parse(this.cartProducts); }
     }

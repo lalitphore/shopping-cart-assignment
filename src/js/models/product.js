@@ -1,5 +1,5 @@
-class productModel {
-    get()
+export default class productModel {
+    static get()
     {
         var ourRequest = new XMLHttpRequest();
         ourRequest.open('GET','https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/server/products/index.get.json');
