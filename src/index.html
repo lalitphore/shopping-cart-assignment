@@ -10,7 +10,7 @@
         <header>
             <div class="container header">       
                 <div class="header__logo-box">
-                    <img src="images/logo.png" alt="logo" class="header__logo-box__image"/>
+                    <img src="static/images/logo.png" alt="logo" class="header__logo-box__image"/>
                 </div>
 
                 <div class="header__nav-box">
@@ -37,15 +37,10 @@
                             </i>
                             <span class="header__cart__items">0 items</span>
                         </a>
-
                         <div class="background-overlay">
 
                         </div>
                         <div class="cart-container-popover">
-                            <div class="popup-header">
-                                <div class="popup-header__left">My Cart (1 Item)</div>
-                                <div class="popup-header__right">&#10006;</div>
-                            </div>
                             <div class="cart-container">
                                 <div class="container">
                                     <section class="cart-container__items">
@@ -54,7 +49,7 @@
                                     <section>
                                         <div class="cart-product">
                                                 <div class="cart-product__image">
-                                                    <img src="images/products/fruit-n-veg/kiwi-green.jpg" alt="cart product image">
+                                                    <img src="static/images/products/fruit-n-veg/kiwi-green.jpg" alt="cart product image">
                                                 </div>
                                                 <div class="cart-product__info">
                                                     <div class="cart-product__info__heading"><h4>Fresho Kiwi - Green, 3 pcs</h4></div>
@@ -76,7 +71,7 @@
                     
                                     <section class="cart-container__items cart-addon">
                                         <div class="cart-addon__image">
-                                            <img src="images/lowest-price.png" alt="Lowest price image">
+                                            <img src="static/images/lowest-price.png" alt="Lowest price image">
                                         </div>
                                         <div class="cart-addon__details">
                                             <p>You won't find it cheaper anywhere</p>
@@ -95,7 +90,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="header__mobile-nav list-icon" id="mobile-nav-icon">&#9776;</div>
                 </div>
@@ -104,27 +98,8 @@
 
         <section>
                 <div class="container section-shadow-box">
-                    <div class="slideshow-container">
-                        <div class="mySlides1 slideshow-container__slides">
-                            <img src="images/offers/offer1.jpg" style="width:100%">
-                        </div>
+                    <div class="slideshow-container" id="banner-slider">
                         
-                        <div class="mySlides1 slideshow-container__slides">
-                            <img src="images/offers/offer2.jpg" style="width:100%">
-                        </div>
-                        
-                        <div class="mySlides1 slideshow-container__slides">
-                            <img src="images/offers/offer3.jpg" style="width:100%">
-                        </div>
-                        
-                        <a class="slideshow-container__prev" onclick="plusSlides(-1, 0)">PREV</a>
-                        <a class="slideshow-container__next" onclick="plusSlides(1, 0)">NEXT</a>
-
-                        <div class="slideshow-container__dots">
-                            <span class="slideshow-container__dots__dot" onclick="gotoslide(1,0)"></span> 
-                            <span class="slideshow-container__dots__dot" onclick="gotoslide(2,0)"></span> 
-                            <span class="slideshow-container__dots__dot" onclick="gotoslide(3,0)"></span> 
-                        </div>
                     </div>
                 </div>
                         
@@ -136,7 +111,7 @@
                 <div class="section-shadow-box hp-product-category">
                     <div class="hp-product-category__box">
                         <div class="hp-product-category__box__img">
-                            <img src="images/category/fruits.png" alt="baby image" />
+                            <img src="static/images/category/fruits.png" alt="baby image" />
                         </div>
                         <div class="hp-product-category__box__detail">
                             <h4>Beverages</h4>
@@ -149,7 +124,7 @@
                 <div class="section-shadow-box hp-product-category">
                     <div class="hp-product-category__box">
                         <div class="hp-product-category__box__img">
-                            <img src="images/category/beauty.png" alt="baby image" />
+                            <img src="static/images/category/beauty.png" alt="baby image" />
                         </div>
                         <div class="hp-product-category__box__detail">
                             <h4>Beuty And Hygiene</h4>
@@ -162,7 +137,7 @@
                 <div class="section-shadow-box hp-product-category">
                     <div class="hp-product-category__box">
                         <div class="hp-product-category__box__img">
-                            <img src="images/category/beauty.png" alt="baby image" />
+                            <img src="static/images/category/beauty.png" alt="baby image" />
                         </div>
                         <div class="hp-product-category__box__detail">
                             <h4>Beuty And Hygiene</h4>
@@ -205,14 +180,14 @@
 
     /*  Slider Javascript */
     var slideIndex = [1];
-    var slideId = ["mySlides1"]
-    showSlides(1, 0);
+    var slideId = ["mySlides1"];
 
     function plusSlides(n, no) {
         showSlides(slideIndex[no] += n, no);
     }
 
     function gotoslide(n, no){
+        n=n+1;
         showSlides(slideIndex[no] = n, no);
     }
 

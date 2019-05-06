@@ -1,7 +1,11 @@
 const Path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+require("html-loader");
+
 module.exports = {
   entry: './src/js/main.js',
   output: {
@@ -27,7 +31,6 @@ module.exports = {
       filename: 'signin.html',
       template: './src/signin.html',
       inject: true,
-      
     }),
     new HtmlWebpackPlugin({
       filename: 'products.html',
@@ -48,6 +51,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test:/\.hbs$/,
+        loader:"handlebars-loader"
+      },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         use: {

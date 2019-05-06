@@ -1,0 +1,14 @@
+{{#each this}}
+<div class="mySlides1 slideshow-container__slides">
+    <img src="{{bannerImageUrl}}" alt="{{bannerImageUrl}}" style="width:100%">
+</div>
+{{/each}}
+
+<a class="slideshow-container__prev" onclick="plusSlides(-1, 0)">PREV</a>
+<a class="slideshow-container__next" onclick="plusSlides(1, 0)">NEXT</a>
+
+<div class="slideshow-container__dots">
+    {{#each this}}
+        <span class="slideshow-container__dots__dot" onclick="gotoslide({{@key}},0)"></span> 
+    {{/each}}
+</div>

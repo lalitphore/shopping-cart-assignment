@@ -11,7 +11,8 @@
   "author": "Lalit Chaudhary",
   "license": "ISC",
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
+    "handlebars": "^4.1.2",
+    "handlebars-loader": "^1.7.1",
     "jquery": "^3.3.1",
     "sass": "^1.17.3",
     "webpack-dev-server": "^3.2.1"
@@ -21,6 +22,9 @@
     "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-partials-plugin": "^0.5.1",
+    "html-webpack-plugin": "^4.0.0-beta.5",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
