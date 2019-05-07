@@ -1,5 +1,6 @@
 import HomeView from '../views/home';
 import HomeModel from '../models/home';
+import ProductModel from '../models/product';
 var homeController = (function(){
     const HomeViewObj = new HomeView();
     const HomeModelObj = new HomeModel();
@@ -10,8 +11,21 @@ var homeController = (function(){
         if(document.getElementById('banner-slider'))
         {
             renderBanners();
+            renderProductCategories();
         }
-	}
+    }
+    
+    function renderProductCategories()
+    {
+        let ProductModelObj = new ProductModel();
+        let productCategories=ProductModelObj.getCategoryJson();
+        productCategories.then(function(response){
+            if(response.success==true)
+            {
+                HomeViewObj.setCategoryHtml(response.data);
+            }
+        });
+    }
 
     function renderBanners()
     {
