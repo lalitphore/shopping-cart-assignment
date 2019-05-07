@@ -4,11 +4,11 @@
 </div>
 {{/each}}
 
-<a class="slideshow-container__prev" onclick="plusSlides(-1, 0)">PREV</a>
-<a class="slideshow-container__next" onclick="plusSlides(1, 0)">NEXT</a>
+<a class="slideshow-container__prev prev-slide-button">PREV</a>
+<a class="slideshow-container__next next-slide-button">NEXT</a>
 
 <div class="slideshow-container__dots">
     {{#each this}}
-        <span class="slideshow-container__dots__dot" onclick="gotoslide({{@key}},0)"></span> 
+        <span class="slideshow-container__dots__dot slider-dot" data-key="{{@key}}"></span> 
     {{/each}}
 </div>

@@ -1,8 +1,6 @@
-import productModel from './product';
-export default class CartModel
+export default class CartModel 
 {
     constructor(){
-
         this.cartProducts=sessionStorage.getItem("cartProducts");
         if(this.cartProducts==null){ this.cartProducts={}; }else{ this.cartProducts=JSON.parse(this.cartProducts); }
     }
@@ -14,13 +12,20 @@ export default class CartModel
     
     add(product)
     {
+       
        if(this.cartProducts[product.id])
        {
             this.cartProducts[product.id]['quantity']++;
        }
        else
        {
-            this.cartProducts[product.id]={'quantity':1,'price':parseFloat(product.price)};
+            let productInfo = {
+                'quantity':1,
+                'price':parseFloat(product.price),
+                'image':product.image,
+                'title':product.title
+            };            
+            this.cartProducts[product.id]=productInfo;
        }
        console.log(this.cartProducts,'Add');
        sessionStorage.setItem("cartProducts",JSON.stringify(this.cartProducts));
@@ -44,5 +49,4 @@ export default class CartModel
         console.log(this.cartProducts,'Minus');
         return this.cartProducts;
     }
-
 }

@@ -20,6 +20,12 @@
 }
 
 //Cart Products
+.cart-products
+{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 .cart-product
 {
     display: flex;
