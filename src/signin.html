@@ -64,13 +64,13 @@
                 <div class="login-box__form">
                     <form action="#" method="post" autocomplete="off">
                         <div class="login-box__form__group">
-                            <input type="email" id="email" required="required" name="email" placeholder="" />
+                            <input type="email" id="email" class="custom-textbox" required="required" name="email" placeholder="" />
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label for="email">Email</label>
                         </div>
                         <div class="login-box__form__group">
-                            <input type="password" id="password" required="required" name="password" placeholder="" />
+                            <input type="password" id="password" class="custom-textbox" required="required" name="password" placeholder="" />
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label for="password" >Password</label>
@@ -92,24 +92,5 @@
                 </div>
             </div>
         </footer>
-        
-
-<script>
-    document.getElementById("mobile-nav-icon").addEventListener("click", function(){
-        let navElement = document.getElementById('mobile-nav-icon');
-        if(navElement.classList.contains("cross-icon"))
-        {
-            document.getElementById('mobile-nav-icon').innerHTML='&#9776;';
-            navElement.classList.remove("cross-icon");
-            document.getElementById('header__menu').style.display = "none";
-        }
-        else
-        {
-            document.getElementById('mobile-nav-icon').innerHTML='&#10005;';
-            navElement.classList.add("cross-icon");
-            document.getElementById('header__menu').style.display = "block";
-        }
-    });
-</script>
     </body>
 </html>

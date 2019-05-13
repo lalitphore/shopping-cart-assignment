@@ -10,6 +10,36 @@ var productController = (function(){
         renderProductsGrid();
         renderProductCategories();
       }
+
+
+      /*  Category Accordion */
+      if(document.getElementById("mobile-accordion-icon"))
+      {
+          document.getElementById("mobile-accordion-icon").addEventListener("click",function(){
+              var listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
+              if(this.classList.contains('nav-open'))
+              {
+                  for(var i = 0; i < listItems.length; i++) {
+                      listItems[i].style.display = "none";
+                  }
+                  var activeLi = document.querySelectorAll('.plp-container__sidebar__categories > li.active');
+                  activeLi[0].style.display="block";
+                  this.classList.remove("nav-open");
+                  this.children[0].classList.add('down-arrow-icon');
+                  this.children[0].classList.remove('up-arrow-icon');
+              }
+              else
+              {
+                  for(var i = 0; i < listItems.length; i++) {
+                      listItems[i].style.display = "block";
+                  }
+                  this.children[0].classList.remove('down-arrow-icon');
+                  this.children[0].classList.add('up-arrow-icon');
+                  this.classList.add("nav-open");
+              }
+        });
+    }
+
   }
   
   function renderProductsGrid()

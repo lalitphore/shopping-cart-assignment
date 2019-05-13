@@ -76,25 +76,5 @@
                 </div>
             </div>
         </footer>
-<script>
-    /*  Mobile Nav Menu Javascript */
-
-    document.getElementById("mobile-nav-icon").addEventListener("click", function(){
-        let navElement = document.getElementById('mobile-nav-icon');
-        if(navElement.classList.contains("cross-icon"))
-        {
-            document.getElementById('mobile-nav-icon').innerHTML='&#9776;';
-            navElement.classList.remove("cross-icon");
-            document.getElementById('header__menu').style.display = "none";
-        }
-        else
-        {
-            document.getElementById('mobile-nav-icon').innerHTML='&#10005;';
-            navElement.classList.add("cross-icon");
-            document.getElementById('header__menu').style.display = "block";
-        }
-    });
-
-</script>
     </body>
 </html>

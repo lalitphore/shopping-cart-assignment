@@ -8,6 +8,21 @@ var cartController = (function(){
 		const productsInCart = cartModelObj.get();
 		CartViewObj.setHtml(productsInCart);
 
+		document.getElementById('close_cart_popover').addEventListener('click',function(event){
+			event.target.closest('.cart-container-popover').style.display='none';
+			document.querySelector('.background-overlay').style.display='none';
+		});
+
+		document.querySelector('.header__cart').addEventListener('mouseover',function(event){
+			document.querySelector('.cart-container-popover').style.display='block';
+			document.querySelector('.background-overlay').style.display='block';
+		});
+
+		document.querySelector('.background-overlay').addEventListener('click',function(event){
+			document.querySelector('.cart-container-popover').style.display='none';
+			event.target.style.display='none';
+		});
+		
 		document.addEventListener('click', function (event) {
 			if (event.target.matches('.add-to-cart')) {
 				const product = event.target.closest('.plp-container__products__item').dataset;
