@@ -8,10 +8,7 @@ var cartController = (function(){
 		const productsInCart = cartModelObj.get();
 		CartViewObj.setHtml(productsInCart);
 
-		document.getElementById('close_cart_popover').addEventListener('click',function(event){
-			event.target.closest('.cart-container-popover').style.display='none';
-			document.querySelector('.background-overlay').style.display='none';
-		});
+		document.getElementById('close_cart_popover').addEventListener('click',closePopover);
 
 		document.querySelector('.header__cart').addEventListener('mouseover',function(event){
 			document.querySelector('.cart-container-popover').style.display='block';
@@ -58,7 +55,13 @@ var cartController = (function(){
 					CartViewObj.removeCartProduct(productSelector); 
 				}
 			}
+			document.getElementById('close_cart_popover').addEventListener('click',closePopover);
 		}, false);
+	}
+
+	function closePopover(event){
+		event.target.closest('.cart-container-popover').style.display='none';
+		document.querySelector('.background-overlay').style.display='none';
 	}
 
 	return{

@@ -12,22 +12,23 @@ export default class CartModel
     
     add(product)
     {
-       
        if(this.cartProducts[product.id])
        {
+            console.log(this.cartProducts[product.id]);
             this.cartProducts[product.id]['quantity']++;
+            this.cartProducts[product.id]['price']=parseFloat(this.cartProducts[product.id]['unitPrice'])*parseInt(this.cartProducts[product.id]['quantity']);
        }
        else
        {
             let productInfo = {
                 'quantity':1,
+                'unitPrice':parseFloat(product.price),
                 'price':parseFloat(product.price),
                 'image':product.image,
                 'title':product.title
             };            
             this.cartProducts[product.id]=productInfo;
        }
-       console.log(this.cartProducts,'Add');
        sessionStorage.setItem("cartProducts",JSON.stringify(this.cartProducts));
        return this.cartProducts;
     }
@@ -36,6 +37,7 @@ export default class CartModel
         if(type=='quantity')
         {
             this.cartProducts[product.id]['quantity']--;
+            this.cartProducts[product.id]['price']=parseFloat(this.cartProducts[product.id]['unitPrice'])*parseInt(this.cartProducts[product.id]['quantity']);
             if(this.cartProducts[product.id]['quantity']==0)
             {
                 delete this.cartProducts[product.id];
@@ -46,7 +48,6 @@ export default class CartModel
             delete this.cartProducts[product.id];
         }
         sessionStorage.setItem("cartProducts",JSON.stringify(this.cartProducts));
-        console.log(this.cartProducts,'Minus');
         return this.cartProducts;
     }
 }

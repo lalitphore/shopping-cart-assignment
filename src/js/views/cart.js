@@ -16,7 +16,7 @@ export default class CartView
         var totalPrice=0;
         var totalProductsInCart=0;
         for(let key in this.products){
-            totalPrice+=this.products[key]['price']*this.products[key]['quantity'];
+            totalPrice+=this.products[key]['price'];
             totalProductsInCart++;
         }
         
@@ -35,7 +35,7 @@ export default class CartView
        let price=productData.price;
        let quantity=productData.quantity;
        product.querySelector('.product-quantity').innerHTML=quantity;
-       product.querySelector('.product-total-price').innerHTML=price*quantity;
+       product.querySelector('.product-total-price').innerHTML=price;
        this.updateCounter();
     }
 
