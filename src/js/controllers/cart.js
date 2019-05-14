@@ -8,17 +8,19 @@ var cartController = (function(){
 		const productsInCart = cartModelObj.get();
 		CartViewObj.setHtml(productsInCart);
 
-		document.getElementById('close_cart_popover').addEventListener('click',closePopover);
+		if(document.querySelector('.background-overlay'))
+		{
+			document.querySelector('.background-overlay').addEventListener('click',function(event){
+				document.querySelector('.cart-container-popover').style.display='none';
+				event.target.style.display='none';
+			});
+			document.getElementById('close_cart_popover').addEventListener('click',closePopover);
 
-		document.querySelector('.header__cart').addEventListener('mouseover',function(event){
-			document.querySelector('.cart-container-popover').style.display='block';
-			document.querySelector('.background-overlay').style.display='block';
-		});
-
-		document.querySelector('.background-overlay').addEventListener('click',function(event){
-			document.querySelector('.cart-container-popover').style.display='none';
-			event.target.style.display='none';
-		});
+			document.querySelector('.header__cart').addEventListener('mouseover',function(event){
+				document.querySelector('.cart-container-popover').style.display='block';
+				document.querySelector('.background-overlay').style.display='block';
+			});
+		}
 		
 		document.addEventListener('click', function (event) {
 			if (event.target.matches('.add-to-cart')) {
