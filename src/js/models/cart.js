@@ -14,7 +14,6 @@ export default class CartModel
     {
        if(this.cartProducts[product.id])
        {
-            console.log(this.cartProducts[product.id]);
             this.cartProducts[product.id]['quantity']++;
             this.cartProducts[product.id]['price']=parseFloat(this.cartProducts[product.id]['unitPrice'])*parseInt(this.cartProducts[product.id]['quantity']);
        }
@@ -45,7 +44,7 @@ export default class CartModel
         }
         else
         {
-            delete this.cartProducts[product.id];
+            this.cartProducts[product.id] ? delete this.cartProducts[product.id] : '';
         }
         sessionStorage.setItem("cartProducts",JSON.stringify(this.cartProducts));
         return this.cartProducts;
