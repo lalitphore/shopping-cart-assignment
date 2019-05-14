@@ -1,5 +1,5 @@
 {{#each this}}
-<div class="plp-container__products__item" data-id="{{id}}">
+<div class="plp-container__products__item" data-id="{{id}}" data-price="{{price}}" data-title="{{name}}" data-image="{{imageURL}}">
     <div class="plp-container__products__item__title">
         <h4>{{name}}</h4>
     </div>
@@ -11,7 +11,7 @@
             {{description}}
         </p>
         <div class="plp-container__products__item__price">
-            <button type="button" class="btn-1">Buy Now <span class="price">Rs {{price}}</span></button>
+            <button type="button" class="btn-1 add-to-cart">Buy Now <span class="price">Rs {{price}}</span></button>
         </div>
     </div>
 </div>
