@@ -168,12 +168,16 @@
         z-index: 2;*/
     }
 
-    .header__cart:hover {
-        .cart-container-popover,.background-overlay
-        {
-            display: block;
+    .header__cart{
+        &:hover {
+            .cart-container-popover,.background-overlay
+            {
+                display: block;
+            }
+        }   
+        a{
+            z-index: 4;
         }
-        
     }
 }
 
