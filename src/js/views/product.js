@@ -2,9 +2,16 @@ export default class ProductView
 {
     setHtmlGrid(productsData)
     {
-        var productTemplate = require('../../templates/product-grid.hbs');
         var productSelector = document.getElementById('products-grid');
-        productSelector.innerHTML= productTemplate(productsData);
+        if(productsData.length)
+        {
+            var productTemplate = require('../../templates/product-grid.hbs');
+            productSelector.innerHTML= productTemplate(productsData);
+        }
+        else
+        {
+            productSelector.innerHTML='Products not found ...';
+        }
     }
 
     setCategoryHtml(categoriesData)

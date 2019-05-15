@@ -11,7 +11,6 @@ var productController = (function(){
         renderProductCategories();
       }
 
-
       /*  Category Accordion */
       if(document.getElementById("mobile-accordion-icon"))
       {
@@ -41,10 +40,39 @@ var productController = (function(){
     }
 
   }
+
+  function renderCategoryProductsGrid(e)
+  {
+    let categoryId = e.currentTarget.dataset.key;
+    var productCategories = document.getElementsByClassName('product-category');
+    Array.from(productCategories).forEach(link => {
+      link.classList.remove('active');
+    });
+    e.currentTarget.classList.add('active');
+
+    let productsJson = productModelObj.getJson();
+    productsJson.then(function(response){
+          if(response.success==true)
+          {
+            let categoryProducts = [];
+            for(let k = 0 ; k < response.data.length ; k++)
+            {
+                if(response.data[k].category==categoryId){
+                  categoryProducts.push(response.data[k]);
+                }
+            }
+            ProductViewObj.setHtmlGrid(categoryProducts);
+          }
+          else
+          {
+            console.log('PRODUCTS DATA',response.data);
+          }
+    });
+  }
   
   function renderProductsGrid()
   {
-      var productsJson = productModelObj.getJson();
+    let productsJson = productModelObj.getJson();
       productsJson.then(function(response){
           if(response.success==true)
           {
@@ -64,6 +92,10 @@ var productController = (function(){
           if(response.success==true)
           {
             ProductViewObj.setCategoryHtml(response.data);
+            var productCategories = document.querySelectorAll('.product-category');
+              Array.from(productCategories).forEach(link => {
+                  link.addEventListener('click',renderCategoryProductsGrid);
+              });
           }
           else
           {
