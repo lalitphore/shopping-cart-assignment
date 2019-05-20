@@ -21,10 +21,14 @@
                     color:$dark-gray;
                     font-size: 88%;
                 }
+                &:nth-child(1){
+                    display: block;
+                    background-color: $light-gray;
+                }
             }
             .active
             {
-                background-color: $primary-color;
+                background-color: $primary-color !important;
                 display: block;
                 a
                 {

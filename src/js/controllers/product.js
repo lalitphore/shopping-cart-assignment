@@ -14,31 +14,34 @@ var productController = (function(){
       /*  Category Accordion */
       if(document.getElementById("mobile-accordion-icon"))
       {
-          document.getElementById("mobile-accordion-icon").addEventListener("click",function(){
-              var listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
-              if(this.classList.contains('nav-open'))
-              {
-                  for(var i = 0; i < listItems.length; i++) {
-                      listItems[i].style.display = "none";
-                  }
-                  var activeLi = document.querySelectorAll('.plp-container__sidebar__categories > li.active');
-                  activeLi[0].style.display="block";
-                  this.classList.remove("nav-open");
-                  this.children[0].classList.add('down-arrow-icon');
-                  this.children[0].classList.remove('up-arrow-icon');
-              }
-              else
-              {
-                  for(var i = 0; i < listItems.length; i++) {
-                      listItems[i].style.display = "block";
-                  }
-                  this.children[0].classList.remove('down-arrow-icon');
-                  this.children[0].classList.add('up-arrow-icon');
-                  this.classList.add("nav-open");
-              }
-        });
-    }
+          document.getElementById("mobile-accordion-icon").removeEventListener("click",categpryAccordionListners(1));
+          document.getElementById("mobile-accordion-icon").addEventListener("click",categpryAccordionListners(1));
+      }
+  }
 
+  function categpryAccordionListners(t){
+    var listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
+    var that = document.getElementById("mobile-accordion-icon");
+    if(document.getElementById("mobile-accordion-icon").classList.contains('nav-open'))
+    {
+        for(var i = 0; i < listItems.length; i++) {
+            listItems[i].style.display = "none";
+        }
+        var activeLi = document.querySelectorAll('.plp-container__sidebar__categories > li.active');
+        if(activeLi.length){ activeLi[0].style.display="block"; }
+        that.classList.remove("nav-open");
+        that.children[0].classList.add('down-arrow-icon');
+        that.children[0].classList.remove('up-arrow-icon');
+    }
+    else
+    {
+        for(var i = 0; i < listItems.length; i++) {
+            listItems[i].style.display = "block";
+        }
+        that.children[0].classList.remove('down-arrow-icon');
+        that.children[0].classList.add('up-arrow-icon');
+        that.classList.add("nav-open");
+    } 
   }
 
   function renderCategoryProductsGrid(e)
@@ -49,7 +52,7 @@ var productController = (function(){
       link.classList.remove('active');
     });
     e.currentTarget.classList.add('active');
-
+    if(window.getComputedStyle(document.getElementById('mobile-accordion-icon')).display!='none'){ categpryAccordionListners(2); }
     let productsJson = productModelObj.getJson();
     productsJson.then(function(response){
           if(response.success==true)

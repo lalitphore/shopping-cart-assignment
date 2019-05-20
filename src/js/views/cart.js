@@ -5,24 +5,38 @@ export default class CartView
     }
     setHtml()
     {
-        var cartTemplate = require('../../templates/product-cart.hbs');
-        var cartSelector = document.querySelector(".cart-container");
-        cartSelector.innerHTML= cartTemplate(this.products);
+        let cartTemplate,cartSelector;
+        cartTemplate = require('../../templates/product-cart.hbs');
+        cartSelector = document.getElementsByClassName("cart-container");
+        if(cartSelector[1])
+        {
+            cartSelector[0].innerHTML='';
+            document.querySelector('.header__cart').classList.add('pointer-none');
+            document.querySelector('.background-overlay').classList.add('hidden');
+            cartSelector[1].innerHTML= cartTemplate(this.products);
+            document.querySelector('.cart_container_head').classList.add('hidden');
+        }
+        else
+        {
+            document.querySelector('.header__cart').classList.remove('pointer-none');
+            document.querySelector('.cart-container-popover').classList.add('hidden');
+            cartSelector[0].innerHTML= cartTemplate(this.products);
+        }
         this.updateCounter();
     }
 
     updateCounter()
     {
-        var totalPrice=0;
-        var totalProductsInCart=0;
+        let totalPrice,totalProductsInCart,x,i;
+        totalPrice=0;
+        totalProductsInCart=0;
         for(let key in this.products){
             totalPrice+=this.products[key]['price'];
             totalProductsInCart++;
         }
         
         
-        let x = document.getElementsByClassName('cart-total');
-        let i;
+        x = document.getElementsByClassName('cart-total');
         for (i = 0; i < x.length; i++) {
             x[i].innerHTML= totalProductsInCart;
         }
@@ -32,8 +46,9 @@ export default class CartView
 
     updateCartProduct(productData,product)
     {
-       let price=productData.price;
-       let quantity=productData.quantity;
+       let price,quantity;
+       price=productData.price;
+       quantity=productData.quantity;
        product.querySelector('.product-quantity').innerHTML=quantity;
        product.querySelector('.product-total-price').innerHTML=price;
        this.updateCounter();
