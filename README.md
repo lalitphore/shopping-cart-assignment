@@ -24,4 +24,5 @@ Below are pages it contains
 
 
 > Run below command to check test cases
-> npm run test
+    
+    npm run test
