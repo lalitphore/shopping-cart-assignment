@@ -10,7 +10,8 @@
         {
             background-color: $light-gray;
             width: 100%;
-            display: inline-table;
+            display: flex;
+            flex-direction: column;
             li
             {
                 padding: 6px 5%;
@@ -30,6 +31,7 @@
             {
                 background-color: $primary-color !important;
                 display: block;
+                order: -1;
                 a
                 {
                     color:$white-color;
@@ -65,6 +67,7 @@
             {
                 flex-basis: 100%;
                 padding-bottom: 15px;
+                height: 50px;
             }
 
             &__image
@@ -134,6 +137,7 @@
                 .active
                 {
                     background-color: $primary-color;
+                    order: unset;
                     a
                     {
                         color: $white-color;
