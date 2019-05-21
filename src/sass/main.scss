@@ -30,6 +30,15 @@ body{
 
 header{
     box-shadow: 0px 1px 11px #88888840;
+    position: fixed;
+    background-color: $white-color;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+}
+
+#root{
+    margin-top: 60px;
 }
 
 a{
@@ -118,6 +127,9 @@ h4{
 }
 
 @mixin tablet {
+    #root{
+        margin-top: 75px;
+    }
     @media (min-width: #{$tablet-width}) {
       @content;
     }

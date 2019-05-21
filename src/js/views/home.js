@@ -11,6 +11,11 @@ export default class HomeView
     {
         var homeCategoryTemplate = require('../../templates/home-product-category.hbs');
         var categoriesSelector = document.getElementById('home-categories');
+        for(let m = 0 ; m < categoriesData.length ; m++){
+            if(categoriesData[m]['enabled']==false){
+                delete categoriesData[m];
+            }
+        }
         categoriesSelector.innerHTML= homeCategoryTemplate(categoriesData);
     }
 }

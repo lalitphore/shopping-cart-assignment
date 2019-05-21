@@ -3,6 +3,8 @@ import productController from './controllers/product';
 import cartController from './controllers/cart';
 import homeController from './controllers/home';
 
+
+
 const routes = {
     "":"index.hbs",
     "#home":"index.hbs",

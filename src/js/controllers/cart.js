@@ -30,6 +30,8 @@ var cartController = (function(){
 			const product = event.target.closest('.plp-container__products__item').dataset;
 			let products = cartModelObj.add(product);
 			CartViewObj.setHtml(products);
+			document.querySelector('.header__cart__icon').classList.add('header__cart__icon-shake');
+			setTimeout(function(){ document.querySelector('.header__cart__icon').classList.remove('header__cart__icon-shake'); },500);
 		}
 		if (event.target.matches('.remove-from-cart')) {
 			const product = event.target.closest('.plp-container__products__item').dataset;
