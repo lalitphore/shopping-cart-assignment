@@ -127,10 +127,6 @@
 }
 
 // Cart Popup
-.cart-container-popover,.background-overlay,.cart_container_head
-{
-    display: none;
-}
 
 @include tablet {
     .cart-container-popover
@@ -191,12 +187,6 @@
     }
 
     .header__cart{
-        &:hover {
-            .cart-container-popover,.background-overlay
-            {
-                display: block;
-            }
-        }   
         a{
             z-index: 4;
         }

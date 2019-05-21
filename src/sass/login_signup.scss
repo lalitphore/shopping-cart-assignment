@@ -65,7 +65,14 @@
             top: 10px;
             transition: all 0.2s ease; 
         }
-    
+        
+        .display-top{
+            top: -20px;
+            transform: scale(0.75);
+            left: -2px;
+            color: $secondary-color; 
+        }
+
         button
         {
             font-size: 18px;

@@ -2,10 +2,60 @@ import '../sass/main.scss';
 import productController from './controllers/product';
 import cartController from './controllers/cart';
 import homeController from './controllers/home';
+
+const routes = {
+    "":"index.hbs",
+    "#home":"index.hbs",
+    "#products":"products.hbs",
+    "#signin":"signin.hbs",
+    "#register":"register.hbs",
+    "#cart":"cart.hbs"
+};
+
+
 window.onload=function(){
-    cartController.init();
-    productController.init();
-    homeController.init();
+    setLayout();
+}
+window.addEventListener('hashchange', function(){ setLayout(); });
+
+var setLayout = function(){
+    let path,currentRoute;
+    path = window.location.hash;
+    currentRoute = routes[path];
+   
+    var template = new Promise(function(resolve,reject){
+        var currentPartial = require('../partials/'+currentRoute);
+        if(currentPartial)
+        {
+            document.getElementById("root").innerHTML = currentPartial();
+        }
+        resolve(currentRoute);
+    }).then(function(d){
+        switch(d)
+        {
+            case "products.hbs":
+                productController.init();
+            break;
+            case "index.hbs":
+                homeController.init();
+            break;
+
+            case "signin.hbs":
+            case "register.hbs":
+                let customTextBoxes = document.querySelectorAll('.custom-textbox');
+                customTextBoxes.forEach((textbox) => {
+                    textbox.addEventListener('blur', (event) => {
+                        if(event.target.value){
+                            siblingObj(event.target.closest('div'),'LABEL').classList.add('display-top');
+                        }else{
+                            siblingObj(event.target.closest('div'),'LABEL').classList.remove('display-top');
+                        }
+                    });
+                });
+            break;
+        }
+        cartController.init();
+    });
 }
 
 /* Custom Text box handling */
@@ -18,20 +68,6 @@ var siblingObj = function(parentofSelected,sibling){
             return myValue;
         }
     }
-}
-
-if(document.querySelectorAll('.custom-textbox').length)
-{
-    let customTextBoxes = document.querySelectorAll('.custom-textbox');
-    customTextBoxes.forEach((textbox) => {
-        textbox.addEventListener('blur', (event) => {
-            if(event.target.value){
-                siblingObj(event.target.closest('div'),'LABEL').style.display='none';
-            }else{
-                siblingObj(event.target.closest('div'),'LABEL').style.display='block';
-            }
-        });
-    });
 }
 
 /*  Mobile Nav Menu Javascript */

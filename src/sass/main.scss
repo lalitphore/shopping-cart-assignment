@@ -109,6 +109,14 @@ h4{
     padding: 3px;
 }
 
+.hidden{
+    display:none !important;
+}
+
+.pointer-none{
+    pointer-events: none;
+}
+
 @mixin tablet {
     @media (min-width: #{$tablet-width}) {
       @content;

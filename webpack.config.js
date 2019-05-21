@@ -24,30 +24,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
-      inject: true,
-      
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'signin.html',
-      template: './src/signin.html',
-      inject: true,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'products.html',
-      template: './src/products.html',
-      inject: true,
-      
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'register.html',
-      template: './src/register.html',
-      inject: true,
-    }),
-    new HtmlWebpackPlugin({
-        filename: 'cart.html',
-        template: './src/cart.html',
-        inject: true,
-      })
+      inject: true
+    })
   ],
   module: {
     rules: [
