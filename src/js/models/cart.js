@@ -12,7 +12,6 @@ export default class CartModel
     
     add(product)
     {
-       console.log(this.cartProducts[product.id]);
        if(this.cartProducts[product.id])
        {
             this.cartProducts[product.id]['quantity']++;

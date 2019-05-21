@@ -4,14 +4,16 @@
   "description": "Sapient Training Task",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
-    "build": "webpack -p && webpack-dev-server",
+    "start": "npm run server | npm run build",
+    "server":"node node-index.js",
+    "build": "webpack -p",
     "unit": "karma start karma.conf.js ",
     "test": "npm run unit"
   },
   "author": "Lalit Chaudhary",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.0",
     "handlebars": "^4.1.2",
     "handlebars-loader": "^1.7.1",
     "jasmine-core": "^3.4.0",
@@ -20,6 +22,8 @@
     "karma-coverage": "^1.1.2",
     "karma-jasmine": "^2.0.1",
     "karma-webpack": "^3.0.5",
+    "mongodb": "^3.2.5",
+    "mongoose": "^5.5.10",
     "sass": "^1.17.3",
     "webpack-dev-server": "^3.2.1"
   },

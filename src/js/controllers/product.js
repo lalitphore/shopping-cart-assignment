@@ -57,14 +57,7 @@ var productController = (function(){
     productsJson.then(function(response){
           if(response.success==true)
           {
-            let categoryProducts = [];
-            for(let k = 0 ; k < response.data.length ; k++)
-            {
-                if(response.data[k].category==categoryId){
-                  categoryProducts.push(response.data[k]);
-                }
-            }
-            ProductViewObj.setHtmlGrid(categoryProducts);
+            ProductViewObj.setHtmlGrid(response.data);
           }
           else
           {

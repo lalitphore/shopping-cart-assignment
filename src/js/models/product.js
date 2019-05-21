@@ -1,13 +1,9 @@
 export default class productModel {
-    constructor()
-    {
-        this.name="LALIT CHAUDHARY";
-    }
-    getJson()
+    getJson(categoryId="")
     {
         return new Promise(function(resolve, reject) {
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET','https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/server/products/index.get.json');
+            ourRequest.open('GET','http://localhost:3030/products?categoryId='+categoryId);
             ourRequest.onload = function(){
                 if(ourRequest.status>=200 && ourRequest.status < 400)
                 {
@@ -16,7 +12,6 @@ export default class productModel {
                 }
                 else
                 {
-                    console.log('');
                     resolve({"success":false,"data":"We Connected to the server, but it returned an error","error_code":"101"});
                 }
             };
@@ -33,7 +28,7 @@ export default class productModel {
     {
         return new Promise(function(resolve, reject) {
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET','https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/server/categories/index.get.json');
+            ourRequest.open('GET','http://localhost:3030/categories');
             ourRequest.onload = function(){
                 if(ourRequest.status>=200 && ourRequest.status < 400)
                 {
@@ -52,6 +47,5 @@ export default class productModel {
             }
             ourRequest.send();
         })
-        
     }
 }

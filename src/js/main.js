@@ -3,8 +3,7 @@ import productController from './controllers/product';
 import cartController from './controllers/cart';
 import homeController from './controllers/home';
 
-
-
+let layoutInit = 0;
 const routes = {
     "":"index.hbs",
     "#home":"index.hbs",
@@ -24,10 +23,11 @@ var setLayout = function(){
     let path,currentRoute;
     path = window.location.hash;
     currentRoute = routes[path];
-    if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none"){
+    if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none" && layoutInit!=0){
         manageNavMenu();
     }
 
+    layoutInit++;
     var template = new Promise(function(resolve,reject){
         var currentPartial = require('../partials/'+currentRoute);
         if(currentPartial)

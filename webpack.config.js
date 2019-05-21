@@ -9,7 +9,7 @@ require("html-loader");
 module.exports = {
   entry: './src/js/main.js',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/public',
     filename: 'bundle.js',
   },
   plugins: [
