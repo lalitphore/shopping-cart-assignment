@@ -53,7 +53,7 @@ var productController = (function(){
     });
     e.currentTarget.classList.add('active');
     if(window.getComputedStyle(document.getElementById('mobile-accordion-icon')).display!='none'){ categpryAccordionListners(2); }
-    let productsJson = productModelObj.getJson();
+    let productsJson = productModelObj.getJson(categoryId);
     productsJson.then(function(response){
           if(response.success==true)
           {
