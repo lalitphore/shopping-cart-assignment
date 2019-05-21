@@ -3,7 +3,7 @@ export default class productModel {
     {
         return new Promise(function(resolve, reject) {
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET','http://localhost:3030/products?categoryId='+categoryId);
+            ourRequest.open('GET',window.location.origin+'/products?categoryId='+categoryId);
             ourRequest.onload = function(){
                 if(ourRequest.status>=200 && ourRequest.status < 400)
                 {
@@ -28,7 +28,7 @@ export default class productModel {
     {
         return new Promise(function(resolve, reject) {
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET','http://localhost:3030/categories');
+            ourRequest.open('GET',window.location.origin+'/categories');
             ourRequest.onload = function(){
                 if(ourRequest.status>=200 && ourRequest.status < 400)
                 {
