@@ -22,7 +22,10 @@ var setLayout = function(){
     let path,currentRoute;
     path = window.location.hash;
     currentRoute = routes[path];
-   
+    if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none"){
+        manageNavMenu();
+    }
+
     var template = new Promise(function(resolve,reject){
         var currentPartial = require('../partials/'+currentRoute);
         if(currentPartial)
@@ -71,7 +74,9 @@ var siblingObj = function(parentofSelected,sibling){
 }
 
 /*  Mobile Nav Menu Javascript */
-document.getElementById("mobile-nav-icon").addEventListener("click", function(){
+document.getElementById("mobile-nav-icon").addEventListener("click", manageNavMenu);
+
+function manageNavMenu(){
     let navElement = document.getElementById('mobile-nav-icon');
     if(navElement.classList.contains("cross-icon"))
     {
@@ -85,4 +90,4 @@ document.getElementById("mobile-nav-icon").addEventListener("click", function(){
         navElement.classList.add("cross-icon");
         document.getElementById('header__menu').style.display = "block";
     }
-});
+}
