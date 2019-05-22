@@ -28,13 +28,14 @@ app.get('/products',function(req,res){
 });
 
 app.get('/categories',function(req,res){
+    var requestData = req.query;
     const categories = mongoose.db("shopping-cart").collection("category");
     var obj = categories.find({"enabled":true}).sort( { "order": -1 } );
-    var nodeArr;
     obj.toArray(function (err, docs) {
         if (err) throw err;
-        nodeArr = docs;
-        res.send(nodeArr);
+        for(let m=0;m<docs.length;m++){ if(docs[m]['id']==requestData.active){ docs[m]['active']='active'; } }
+        
+        res.send(docs);
     });
 });
 

@@ -20,9 +20,11 @@ window.onload=function(){
 window.addEventListener('hashchange', function(){ setLayout(); });
 
 var setLayout = function(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     let path,currentRoute;
-    path = window.location.hash;
-    currentRoute = routes[path];
+    path = window.location.hash.split('/');
+    currentRoute = routes[path[0]];
     if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none" && layoutInit!=0){
         manageNavMenu();
     }

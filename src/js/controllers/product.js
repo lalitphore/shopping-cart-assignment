@@ -7,8 +7,10 @@ var productController = (function(){
 	{
       if(document.getElementById('products-grid'))
       {
-        renderProductsGrid();
-        renderProductCategories();
+        let categoryId = '';
+        if(window.location.hash.split('/')[1]){ categoryId = window.location.hash.split('/')[1]; }
+        renderProductsGrid(categoryId);
+        renderProductCategories(categoryId);
       }
 
       /*  Category Accordion */
@@ -66,9 +68,9 @@ var productController = (function(){
     });
   }
   
-  function renderProductsGrid()
+  function renderProductsGrid(categoryId)
   {
-    let productsJson = productModelObj.getJson();
+    let productsJson = productModelObj.getJson(categoryId);
       productsJson.then(function(response){
           if(response.success==true)
           {
@@ -81,9 +83,9 @@ var productController = (function(){
     });
   }
 
-  function renderProductCategories()
+  function renderProductCategories(categoryId)
   {
-      var productsCategoryJson = productModelObj.getCategoryJson();
+      var productsCategoryJson = productModelObj.getCategoryJson(categoryId);
       productsCategoryJson.then(function(response){
           if(response.success==true)
           {

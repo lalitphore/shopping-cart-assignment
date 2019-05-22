@@ -24,11 +24,11 @@ export default class productModel {
         
     }
 
-    getCategoryJson()
+    getCategoryJson(categoryId)
     {
         return new Promise(function(resolve, reject) {
             var ourRequest = new XMLHttpRequest();
-            ourRequest.open('GET',window.location.origin+'/categories');
+            ourRequest.open('GET',window.location.origin+'/categories?active='+categoryId);
             ourRequest.onload = function(){
                 if(ourRequest.status>=200 && ourRequest.status < 400)
                 {
