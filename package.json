@@ -7,6 +7,7 @@
     "start": "npm run server | npm run build",
     "server":"nodemon node-index.js",
     "build": "webpack -p",
+    "webpack-server": "webpack -p && webpack-dev-server",
     "unit": "karma start karma.conf.js ",
     "test": "npm run unit"
   },

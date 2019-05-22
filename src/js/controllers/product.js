@@ -5,6 +5,7 @@ var productController = (function(){
   const ProductViewObj = new ProductView();
 	function init()
 	{
+      document.getElementById("mobile-accordion-icon").removeEventListener('click',categoryAccordionListner);
       if(document.getElementById('products-grid'))
       {
         let categoryId = '';
@@ -12,62 +13,49 @@ var productController = (function(){
         renderProductsGrid(categoryId);
         renderProductCategories(categoryId);
       }
-
-      /*  Category Accordion */
-      if(document.getElementById("mobile-accordion-icon"))
-      {
-          document.getElementById("mobile-accordion-icon").removeEventListener("click",categpryAccordionListners(1));
-          document.getElementById("mobile-accordion-icon").addEventListener("click",categpryAccordionListners(1));
-      }
   }
 
-  function categpryAccordionListners(t){
-    var listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
-    var that = document.getElementById("mobile-accordion-icon");
-    if(document.getElementById("mobile-accordion-icon").classList.contains('nav-open'))
+  function manageCategoryAccordion(){
+    let listItems,checkActive;
+    listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
+    manageListItems(listItems,'none');
+    document.getElementById("mobile-accordion-icon").addEventListener('click',categoryAccordionListner);
+  }
+  
+  function categoryAccordionListner()
+  {
+    let listItems,mobileIcon;
+    mobileIcon = document.getElementById("mobile-accordion-icon");
+    listItems = document.querySelectorAll('.plp-container__sidebar__categories > li');
+    
+    if(mobileIcon.classList.contains('nav-open'))
     {
-        for(var i = 0; i < listItems.length; i++) {
-            listItems[i].style.display = "none";
-        }
-        var activeLi = document.querySelectorAll('.plp-container__sidebar__categories > li.active');
-        if(activeLi.length){ activeLi[0].style.display="block"; }
-        that.classList.remove("nav-open");
-        that.children[0].classList.add('down-arrow-icon');
-        that.children[0].classList.remove('up-arrow-icon');
+        mobileIcon.classList.remove("nav-open");
+        mobileIcon.children[0].classList.add('down-arrow-icon');
+        mobileIcon.children[0].classList.remove('up-arrow-icon');
+        manageListItems(listItems,'none');
     }
     else
     {
-        for(var i = 0; i < listItems.length; i++) {
-            listItems[i].style.display = "block";
-        }
-        that.children[0].classList.remove('down-arrow-icon');
-        that.children[0].classList.add('up-arrow-icon');
-        that.classList.add("nav-open");
-    } 
+        mobileIcon.children[0].classList.remove('down-arrow-icon');
+        mobileIcon.children[0].classList.add('up-arrow-icon');
+        mobileIcon.classList.add("nav-open");
+        manageListItems(listItems,'block');
+    }
   }
 
-  function renderCategoryProductsGrid(e)
-  {
-    let categoryId = e.currentTarget.dataset.key;
-    var productCategories = document.getElementsByClassName('product-category');
-    Array.from(productCategories).forEach(link => {
-      link.classList.remove('active');
-    });
-    e.currentTarget.classList.add('active');
-    if(window.getComputedStyle(document.getElementById('mobile-accordion-icon')).display!='none'){ categpryAccordionListners(2); }
-    let productsJson = productModelObj.getJson(categoryId);
-    productsJson.then(function(response){
-          if(response.success==true)
-          {
-            ProductViewObj.setHtmlGrid(response.data);
-          }
-          else
-          {
-            console.log('PRODUCTS DATA',response.data);
-          }
-    });
+  function manageListItems(listItems,type){
+      let checkActive=false;
+      for(var i = 0; i < listItems.length; i++) {
+        if(!listItems[i].classList.contains('active')){
+          listItems[i].style.display = type;
+        }else{
+          checkActive=true;
+        }
+    }
+    if(!checkActive){ listItems[0].style.display = "block"; }
   }
-  
+
   function renderProductsGrid(categoryId)
   {
     let productsJson = productModelObj.getJson(categoryId);
@@ -90,10 +78,10 @@ var productController = (function(){
           if(response.success==true)
           {
             ProductViewObj.setCategoryHtml(response.data);
-            var productCategories = document.querySelectorAll('.product-category');
-              Array.from(productCategories).forEach(link => {
-                  link.addEventListener('click',renderCategoryProductsGrid);
-              });
+            if(window.getComputedStyle(document.getElementById('mobile-accordion-icon')).display!='none')
+            {
+              manageCategoryAccordion(); 
+            }
           }
           else
           {

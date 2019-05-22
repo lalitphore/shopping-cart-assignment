@@ -26,7 +26,9 @@ var setLayout = function(){
     path = window.location.hash.split('/');
     currentRoute = routes[path[0]];
     if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none" && layoutInit!=0){
-        manageNavMenu();
+        document.getElementById('mobile-nav-icon').innerHTML='&#9776;';
+        document.getElementById('mobile-nav-icon').classList.remove("cross-icon");
+        document.getElementById('header__menu').style.display = "none";
     }
 
     layoutInit++;
