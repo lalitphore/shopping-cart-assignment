@@ -79,10 +79,10 @@
 
         &__cart{
             position:absolute;
-            right: 0;
+            right: 0px;
             height: 65%;
             width: 120px;
-            bottom: 0;
+            bottom: 0px;
 
             & > a{
                 position: absolute;
@@ -198,6 +198,6 @@
 
 .sticky {
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 100%;
 }
