@@ -13,6 +13,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Promise: 'es6-promise-promise', // works as expected
+    }),
     new MiniCssExtractPlugin({
       filename: "style.css",
     }),

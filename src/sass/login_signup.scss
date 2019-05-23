@@ -32,6 +32,10 @@
             border: none;
             border-radius: 0;
             border-bottom: 1px solid $dark-gray; 
+
+            &::-webkit-input-placeholder { /* WebKit browsers */
+                color:  transparent;
+            }
             &:focus 
             {
                 outline: none; 
