@@ -32,6 +32,15 @@ module.exports = {
         loader:"handlebars-loader"
       },
       {
+        test: /\.scss$/,
+        exclude: /node_modules/, 
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+      },
+      { 
+        test: /\.css$/, 
+        use: ['style-loader', 'css-loader', 'postcss-loader'] 
+      },
+      {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         use: {
           loader: 'file-loader',
