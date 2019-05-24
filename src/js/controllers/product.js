@@ -1,18 +1,27 @@
 import ProductModel from '../models/product';
 import ProductView from '../views/product';
+import cartController from './cart';
+
 var productController = (function(){
   const productModelObj = new ProductModel();
   const ProductViewObj = new ProductView();
+  
 	function init()
 	{
-      document.getElementById("mobile-accordion-icon").removeEventListener('click',categoryAccordionListner);
-      if(document.getElementById('products-grid'))
-      {
         let categoryId = '';
         if(window.location.hash.split('/')[1]){ categoryId = window.location.hash.split('/')[1]; }
         renderProductsGrid(categoryId);
         renderProductCategories(categoryId);
-      }
+
+        document.getElementById('products-grid').addEventListener('click',buynowListner,false);
+
+  }
+
+  function buynowListner(event){
+    if (event.target.matches('.add-to-cart')) {
+			const product = event.target.closest('.plp-container__products__item').dataset;
+			cartController.buyNow(product);
+		}
   }
 
   function manageCategoryAccordion(){

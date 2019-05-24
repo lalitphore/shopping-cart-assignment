@@ -8,11 +8,8 @@ var homeController = (function(){
 
 	function init()
 	{
-        if(document.getElementById('banner-slider'))
-        {
-            renderBanners();
-            renderProductCategories();
-        }
+        renderBanners();
+        renderProductCategories();
     }
     
     function renderProductCategories()
@@ -42,7 +39,7 @@ var homeController = (function(){
 
     function bindSliderEvents()
     {
-        document.addEventListener('click', function (event) {
+        document.getElementById('banner-slider').addEventListener('click', function (event) {
             if (event.target.matches('.next-slide-button')) {
                 plusSlides(1, 0);
             }
@@ -72,9 +69,11 @@ var homeController = (function(){
         if (n > x.length) {slideIndex[no] = 1}    
         if (n < 1) {slideIndex[no] = x.length}
         for (i = 0; i < x.length; i++) {
-            x[i].classList.add('hidden');  
+            x[i].classList.add('hidden');
+            document.querySelector('[data-key="'+i+'"]').classList.remove('active');
         }
         x[slideIndex[no]-1].classList.remove('hidden');  
+        document.querySelector('[data-key="'+(slideIndex[no]-1)+'"]').classList.add('active');  
     }
     
 	return{

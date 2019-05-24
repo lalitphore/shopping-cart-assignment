@@ -7,6 +7,12 @@ var cartController = (function(){
 	{
 		const productsInCart = cartModelObj.get();
 		CartViewObj.setHtml(productsInCart);
+		manageCartPopover();
+		document.querySelector('.cart-container').addEventListener('click', cartEventListners, false);
+	}
+
+	function manageCartPopover()
+	{
 		let backgroundOverlay=document.querySelector('.background-overlay');
 		if(backgroundOverlay)
 		{
@@ -21,24 +27,18 @@ var cartController = (function(){
 				document.querySelector('.cart-container-popover').classList.remove('hidden');
 			});
 		}
-		document.removeEventListener('click', cartEventListners, false);
-		document.addEventListener('click', cartEventListners, false);
+	}
+
+	function buyNow(product)
+	{
+		event.target.closest('.plp-container__products__item').dataset;
+		let products = cartModelObj.add(product);
+		CartViewObj.setHtml(products);
+		document.querySelector('.header__cart__icon').classList.add('header__cart__icon-shake');
+		setTimeout(function(){ document.querySelector('.header__cart__icon').classList.remove('header__cart__icon-shake'); },500);
 	}
 
 	function cartEventListners(event){
-		if (event.target.matches('.add-to-cart')) {
-			const product = event.target.closest('.plp-container__products__item').dataset;
-			let products = cartModelObj.add(product);
-			CartViewObj.setHtml(products);
-			document.querySelector('.header__cart__icon').classList.add('header__cart__icon-shake');
-			setTimeout(function(){ document.querySelector('.header__cart__icon').classList.remove('header__cart__icon-shake'); },500);
-		}
-		if (event.target.matches('.remove-from-cart')) {
-			const product = event.target.closest('.plp-container__products__item').dataset;
-			let products = cartModelObj.remove(product);
-			CartViewObj.setHtml(products);
-		}
-		
 		if(event.target.matches('.js-manage-cart')){
 			let productSelector,product,productData
 			productSelector = event.target.closest('.cart-product');
@@ -71,7 +71,8 @@ var cartController = (function(){
 	}
 
 	return{
-		init
+		init,
+		buyNow
 	}
 })();
 export default cartController;
