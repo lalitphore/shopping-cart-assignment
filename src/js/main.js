@@ -3,8 +3,7 @@ import productController from './controllers/product';
 import cartController from './controllers/cart';
 import homeController from './controllers/home';
 
-
-
+let layoutInit = 0;
 const routes = {
     "":"index.hbs",
     "#home":"index.hbs",
@@ -21,13 +20,18 @@ window.onload=function(){
 window.addEventListener('hashchange', function(){ setLayout(); });
 
 var setLayout = function(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     let path,currentRoute;
-    path = window.location.hash;
-    currentRoute = routes[path];
-    if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none"){
-        manageNavMenu();
+    path = window.location.hash.split('/');
+    currentRoute = routes[path[0]];
+    if(window.getComputedStyle(document.getElementById("mobile-nav-icon")).display != "none" && layoutInit!=0){
+        document.getElementById('mobile-nav-icon').innerHTML='&#9776;';
+        document.getElementById('mobile-nav-icon').classList.remove("cross-icon");
+        document.getElementById('header__menu').style.display = "none";
     }
 
+    layoutInit++;
     var template = new Promise(function(resolve,reject){
         var currentPartial = require('../partials/'+currentRoute);
         if(currentPartial)

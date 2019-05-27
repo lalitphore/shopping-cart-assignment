@@ -9,17 +9,15 @@ require("html-loader");
 module.exports = {
   entry: './src/js/main.js',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/public',
     filename: 'bundle.js',
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Promise: 'es6-promise-promise', // works as expected
+    }),
     new MiniCssExtractPlugin({
       filename: "style.css",
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -32,6 +30,15 @@ module.exports = {
       {
         test:/\.hbs$/,
         loader:"handlebars-loader"
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/, 
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+      },
+      { 
+        test: /\.css$/, 
+        use: ['style-loader', 'css-loader', 'postcss-loader'] 
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,

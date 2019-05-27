@@ -4,22 +4,32 @@
   "description": "Sapient Training Task",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
-    "build": "webpack -p && webpack-dev-server",
+    "start": "npm run server | npm run build",
+    "server": "nodemon node-index.js",
+    "build": "webpack -p",
+    "webpack-server": "webpack -p && webpack-dev-server",
     "unit": "karma start karma.conf.js ",
     "test": "npm run unit"
   },
   "author": "Lalit Chaudhary",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.5.1",
+    "es6-promise-promise": "^1.0.0",
+    "express": "^4.17.0",
     "handlebars": "^4.1.2",
     "handlebars-loader": "^1.7.1",
+    "install": "^0.12.2",
     "jasmine-core": "^3.4.0",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-jasmine": "^2.0.1",
     "karma-webpack": "^3.0.5",
+    "mongodb": "^3.2.5",
+    "mongoose": "^5.5.10",
+    "npm": "^6.9.0",
+    "postcss-loader": "^3.0.0",
     "sass": "^1.17.3",
     "webpack-dev-server": "^3.2.1"
   },
@@ -36,5 +46,16 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "iOS >= 9",
+    "ie >= 10"
+  ]
 }
