@@ -14,20 +14,20 @@
         {{#each this}}
         <div class="cart-product" data-id="{{@key}}" data-price="{{price}}" data-quantity="{{quantity}}">
             <div class="cart-product__image">
-                <img src="{{image}}" alt="cart product image">
+                <img src="{{image}}" alt="{{title}}" tabindex="0">
             </div>
             <div class="cart-product__info">
                 <div class="cart-product__info__heading"><h4>{{title}}</h4></div>
                 <div class="cart-product__info__details">
                     <div class="cart-product__info__details__quantity-box">
                         <button class="cart-prod-btn minus js-minus js-manage-cart" aria-label="Remove 1 quantity of {{title}} from cart">−</button>
-                        <span class="cart-prod-qnty product-quantity">{{quantity}}</span>
+                        <span tabindex="0" class="cart-prod-qnty product-quantity">{{quantity}} <span aria-label="quantity"></span></span>
                         <button class="cart-prod-btn plus js-plus js-manage-cart" aria-label="Add 1 quantity of {{title}} to cart">+</button>
                         <span class="prod-multiply">✕</span>
-                        <span class="prod-price">{{unitPrice}}</span>
+                        <span tabindex="0" class="prod-price">{{unitPrice}} <span aria-label="Rs per unit"></span></span>
                     </div>
-                    <div class="cart-product__info__details__price">
-                        Rs <span class="product-total-price">{{price}}</span>
+                    <div tabindex="0" class="cart-product__info__details__price">
+                        Rs <span class="product-total-price"><span aria-label="total price"></span> {{price}}</span>
                     </div>
                 </div>
             </div>

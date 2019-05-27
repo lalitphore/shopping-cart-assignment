@@ -14,7 +14,7 @@ var cartController = (function(){
 	function manageCartPopover()
 	{
 		let backgroundOverlay=document.querySelector('.background-overlay');
-		if(backgroundOverlay)
+		if(backgroundOverlay && screen.width > 768)
 		{
 			backgroundOverlay.addEventListener('click',function(event){
 				document.querySelector('.cart-container-popover').classList.add('hidden');

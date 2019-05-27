@@ -8,8 +8,8 @@ var productController = (function(){
   
 	function init()
 	{
-        let categoryId = '';
-        if(window.location.hash.split('/')[1]){ categoryId = window.location.hash.split('/')[1]; }
+        let categoryId = window.location.hash.split('/')[1] || '';
+        
         renderProductsGrid(categoryId);
         renderProductCategories(categoryId);
 

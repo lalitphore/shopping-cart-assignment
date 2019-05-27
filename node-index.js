@@ -26,6 +26,40 @@ app.get('/products',function(req,res){
     });
 });
 
+app.get('/users',function(req,res){
+    var requestData = req.query;
+    const users = mongoose.db("shopping-cart").collection("users");
+    var obj = users.find({}).sort( { "order": -1 } );
+    obj.toArray(function (err, docs) {
+        if (err) throw err;
+        res.send(docs);
+    });
+});
+
+app.post('/login',function(req,res){
+    var requestData = req.post;
+    concat(req, buffer => {
+        const data = qs.parse(buffer.toString());
+        console.log('Data: ', data);
+      });
+    console.log(requestData);
+});
+
+app.post('/register',function(req,res){
+    var requestData = req.body;
+
+    console.log(requestData);
+    
+    /*
+    const user = mongoose.db("shopping-cart").collection("users");
+    var obj = user.insertOne(requestData);
+    console.log(obj);
+    obj.toArray(function (err, docs) {
+        if (err) throw err;
+        res.send(docs);
+    });*/
+});
+
 app.get('/categories',function(req,res){
     var requestData = req.query;
     const categories = mongoose.db("shopping-cart").collection("category");
