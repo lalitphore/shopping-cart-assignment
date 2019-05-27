@@ -69,10 +69,12 @@ var homeController = (function(){
         if (n > x.length) {slideIndex[no] = 1}    
         if (n < 1) {slideIndex[no] = x.length}
         for (i = 0; i < x.length; i++) {
-            x[i].classList.add('hidden');
+            x[i].classList.add('hide');
+            x[i].classList.remove('show');  
             document.querySelector('[data-key="'+i+'"]').classList.remove('active');
         }
-        x[slideIndex[no]-1].classList.remove('hidden');  
+        x[slideIndex[no]-1].classList.remove('hide');  
+        x[slideIndex[no]-1].classList.add('show');  
         document.querySelector('[data-key="'+(slideIndex[no]-1)+'"]').classList.add('active');  
     }
     
